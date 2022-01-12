@@ -1,4 +1,4 @@
 # Sample Problems;
 
-1. Max element in array
-2. Reverse 
+1. Remove max element in array
+2. Reverse a string
