@@ -1,0 +1,38 @@
+from collections import deque
+
+
+class Stack:
+    def __init__(self):
+        self.container = deque()
+
+    def push(self, val):
+        self.container.append(val)
+
+    def pop(self):
+        return self.container.pop()
+
+    def peek(self):
+        return self.container[-1]
+
+    def is_empty(self):
+        return len(self.container) == 0
+
+    def reverse(self):
+        s = ''
+        if not self.container:
+            return
+        for i in range(len(self.container) - 1, -1, -1):
+            s += self.container[i]
+        return s
+
+    def size(self):
+        return len(self.container)
+
+
+obj = Stack()
+st = 'We will conquere COVID-19'
+for i in range(len(st)):
+    obj.push(st[i])
+
+st_rev = obj.reverse()
+print(st_rev)
