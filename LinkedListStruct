@@ -1,5 +1,6 @@
 from re import S
 from readline import insert_text
+from tkinter.messagebox import NO
 
 
 class Node:
@@ -33,6 +34,43 @@ class LinkedList:
             root = root.next
         root.next = node
 
+    def insert_values(self, values):
+        for v in values:
+            if not self.head:
+                node = Node(v, None)
+                self.head = node
+            else:
+                node = Node(v, None)
+                root = self.head
+                while root.next:
+                    root = root.next
+                root.next = node
+
+    def insert_after_value(self, bef, aft):
+        root = self.head
+        if not root:
+            print("Empty LinkedList")
+            return
+        while root.data != bef:
+            root = root.next
+        temp = root.next
+        root.next = Node(aft, temp)
+
+    def remove_by_value(self, data):
+        # print(self.head.data)
+        root = self.head
+        prev = None
+        if root.data == data:
+            self.head = root.next
+            return
+        while root and root.data != data:
+            prev = root
+            root = root.next
+        if not root:
+            print(data + ' Not found')
+            return
+        prev.next = root.next
+
     def print(self):
         root = self.head
         s = ''
@@ -43,14 +81,18 @@ class LinkedList:
 
 
 if __name__ == '__main__':
-    l = LinkedList()
-    l.insert_at_beginning(5)
-    l.insert_at_beginning(4)
-    l.insert_at_end(7)
-    l.insert_at_beginning(3)
-    l.insert_at_end(10)
-    l2 = LinkedList()
-    l2.insert(1)
-    l2.insert(2)
-    l2.insert(3)
-    l2.print()
+    ll = LinkedList()
+    ll.insert_values(["banana", "mango", "grapes", "orange"])
+    ll.print()
+    ll.insert_after_value("mango", "apple")  # insert apple after mango
+    ll.print()
+    ll.remove_by_value("orange")  # remove orange from linked list
+    ll.print()
+    ll.remove_by_value("figs")
+    ll.print()
+    ll.remove_by_value("banana")
+    ll.print()
+    ll.remove_by_value("mango")
+    ll.remove_by_value("apple")
+    ll.remove_by_value("grapes")
+    ll.print()
