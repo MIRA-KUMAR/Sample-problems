@@ -1,0 +1,16 @@
+# getattr and setattr
+
+class Person:
+    pass
+
+
+person = Person()
+attr1 = 'first'
+attr1_val = 'Mira'
+attr2 = 'last'
+attr2_val = 'Kumar'
+
+setattr(person, attr1, attr1_val)
+setattr(person, attr2, attr2_val)
+val = getattr(person, attr1)
+print(val)
