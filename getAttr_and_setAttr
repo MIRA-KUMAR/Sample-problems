@@ -12,5 +12,5 @@ attr2_val = 'Kumar'
 
 setattr(person, attr1, attr1_val)
 setattr(person, attr2, attr2_val)
-val = getattr(person, attr1)
+val = getattr(person, 'first')
 print(val)
