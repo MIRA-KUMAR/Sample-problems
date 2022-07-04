@@ -1,0 +1,31 @@
+# Guess a number
+
+import random
+
+
+if __name__ == '__main__':
+    print('You get 6 guesses to guess!')
+    cn = random.randint(1, 20)
+    print('Pick a number from 1-20:')
+    n = input()
+    c = 1
+
+    if n == cn:
+        print("You guessed it right! The number is ", str(cn))
+    while n != cn and c < 6:
+        print("Your guess was wrong. ")
+        print("You still have " + str(6 - c) + " guesses.")
+        if n < cn:
+            print("Your guess is too small. Pick a number again")
+            n = input()
+        elif n > cn:
+            print("Your guess is too big. Pick a number again")
+            n = input()
+
+        c += 1
+
+    if n == cn:
+        print("The number is " + str(cn))
+        print("You got it at " + str(c) + "th attempt.")
+    if n != cn:
+        print("You lost!!")
